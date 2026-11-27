@@ -39,8 +39,8 @@ docker run -d --name mysql-learn \
 # 2. 连进去
 docker exec -it mysql-learn mysql -uroot -p learn
 
-# 3. 导入示例库（生成后才有，见「待办」）
-# docker exec -i mysql-learn mysql -uroot -p'<密码>' learn < learning-notes/sql/itcast.sql
+# 3. 导入示例库（dept / emp / salgrade）
+docker exec -i mysql-learn mysql -uroot -p'<密码>' learn < learning-notes/sql/itcast.sql
 ```
 
 日常起停：
@@ -92,7 +92,9 @@ git add . && git commit -m "notes: $(date +%F)" && git push
 
 ## 待办
 
-- [ ] 按课程附录生成 `sql/itcast.sql`（`emp` 20 行 + `dept` + `salgrade`），导入后 P15–P50 的案例即可直接跑
+- [x] 生成 `sql/itcast.sql`（`dept` 6 行 / `emp` 20 行 / `salgrade` 5 行；附录只有表结构，数据按课堂演示重建）
+- [ ] 导入 `sql/itcast.sql`，跑通 `logs/2026-11-26.md` 中的 `emp` 查询
+- [ ] `Person` / `Address`（LeetCode 175 样式）不在 itcast.sql 内，需要时单独建表
 
 ## 给 AI 的接续说明
 
@@ -102,4 +104,4 @@ git add . && git commit -m "notes: $(date +%F)" && git push
 - **记录**：`logs/` 每日一篇；当天学完更新本文件进度表，并 commit + push
 - **安全**：仓库公开，输出/写入任何密码都用占位符
 - **手册特点**：附录只有示例表结构（emp/dept/salgrade 等），**没有建表语句和 INSERT 数据**，`emp` 相关案例需要先建库
-- **下一步**：生成并导入 `sql/itcast.sql`
+- **下一步**：把 `sql/itcast.sql` 导入 `learn` 库，继续 P15–P50 的 DQL 练习
